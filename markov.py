@@ -24,20 +24,29 @@ def make_chains(text_string):
         {('hi', 'there'): ['mary', 'juanita'], ('there', 'mary'): ['hi'], ('mary', 'hi': ['there']}
     """
     splitted_words = text_string.split()
+    #Defining a variable splitted_words that is equal to a list of the words in the string.
     chains = {}
+    # Creates an empty dictionary
 
     value_list = []
-    for each_word in range(len(splitted_words)- 2):
-        third_word = splitted_words[each_word + 2]
-        key_tuple = splitted_words[each_word], splitted_words[each_word+1]
-        
+    #Creates an empty list
+    for i in range(len(splitted_words)- 2):
+    # loops through list of numbers two less than the last index in the 
+    # splitted words       
+        third_word = splitted_words[i + 2]
+        #Defines a new variable third_word that binds a single word in the splitted
+        #words list at an index +2 from the iterated word
+         
+        key_tuple = splitted_words[i], splitted_words[i+1]
+        # Creates a variable bound to a tuple where the key is stored
+        # The key is consecutive iterated words in splitted words
 
         if key_tuple in chains:
             old_list = chains.get(key_tuple)
             chains[key_tuple] = old_list + [third_word]
+
         else:
-            value_list.append(third_word)
-            chains[key_tuple] = value_list
+            chains[key_tuple] = [third_word]
 
 
 
