@@ -36,7 +36,7 @@ def make_chains(text_string):
         third_word = splitted_words[i + 2]
         #Defines a new variable third_word that binds a single word in the splitted
         #words list at an index +2 from the iterated word
-         
+
         key_tuple = splitted_words[i], splitted_words[i+1]
         # Creates a variable bound to a tuple where the key is stored
         # The key is consecutive iterated words in splitted words
@@ -58,20 +58,24 @@ def make_text(chains):
 
 
     random_key = choice(chains.keys())
-    random_word = choice(chains[random_key])
+    key_tuple = [random_key[0], random_key[1]]
+    markov_words = "" 
 
-    text = "".join(random_key)
-    three_texts = text.join(random_word)
+    
+    while random_key in chains:
+        random_word = choice(chains[random_key])
+        key_tuple.append(random_word)
+        random_key = (random_key[1], random_word)
+        markov_words = markov_words + " " + random_word
 
-    print three_texts
 
-    # Please check the code above 
-
-
+    return markov_words
     
 
 
-input_path = "green-eggs.txt"
+
+
+input_path = "gettysburg.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
@@ -82,4 +86,4 @@ chains = make_chains(input_text)
 # Produce random text
 random_text = make_text(chains)
 
-# print random_text
+print random_text
