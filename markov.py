@@ -56,11 +56,19 @@ def make_chains(text_string):
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
-    text = ""
 
-    # your code goes here
+    random_key = choice(chains.keys())
+    random_word = choice(chains[random_key])
 
-    return text
+    text = "".join(random_key)
+    three_texts = text.join(random_word)
+
+    print three_texts
+
+    # Please check the code above 
+
+
+    
 
 
 input_path = "green-eggs.txt"
@@ -74,4 +82,4 @@ chains = make_chains(input_text)
 # Produce random text
 random_text = make_text(chains)
 
-print random_text
+# print random_text
